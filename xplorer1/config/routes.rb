@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
   devise_for :users
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  get '/', to: 'satellites#index'
+  # get '/satellites', to: 'satellites#index', as: 'satellites'
+  # get '/satellites/:id', to: 'satellites#show'
+  #
+  # get '/satellites/:id/comments/new', to: 'comments#new'
+  # post '/satellites/:id', to: 'comments#create'
+  # delete '/satellites/:id', to: 'comments#destroy'
 end
