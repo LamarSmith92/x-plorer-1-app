@@ -13,3 +13,9 @@
  *= require_tree .
  *= require_self
  */
+@import 'normalize';
+
+#page_wrapper {
+  padding: 3em;
+
+}
