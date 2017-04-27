@@ -22,8 +22,9 @@ class SatellitesController < ApplicationController
     @satellite.destroy
   end
 
-  private
-  def post_params
-    params.require(:satellite).permit(:name, :picture, :description)
-  end
+
+    private
+    def post_params
+      params.require(:satellite).permit(:name, :picture, :description)
+    end
 end
