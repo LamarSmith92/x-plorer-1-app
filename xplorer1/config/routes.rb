@@ -1,6 +1,15 @@
 Rails.application.routes.draw do
+
+
+
   devise_for :users
-  get '/', to: 'satellites#index'
+    resources :users
+    resources :satellites do
+    resources :comments
+end
+    get '/users/:id/about', to: 'users#about'
+    get 'users/index'
+    root "satellites#index"
   # get '/satellites', to: 'satellites#index', as: 'satellites'
   # get '/satellites/:id', to: 'satellites#show'
   #
