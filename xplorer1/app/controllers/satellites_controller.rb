@@ -13,17 +13,17 @@ class SatellitesController < ApplicationController
     @satellite = Satellite.new
   end
 
-    def create
-      @satellite = Satellite.new(satellite_params)
-    end
+  def create
+    @satellite = Satellite.new(satellite_params)
+  end
 
-    def destroy
-      @satellite = Satellite.find(params[:id])
-      @satellite.destroy
-    end
+  def destroy
+    @satellite = Satellite.find(params[:id])
+    @satellite.destroy
+  end
 
-    private
-    def post_params
-      params.require(:satellite).permit(:name, :picture, :description)
-    end
+  private
+  def post_params
+    params.require(:satellite).permit(:name, :picture, :description)
+  end
 end
