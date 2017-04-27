@@ -20,6 +20,7 @@ class SatellitesController < ApplicationController
 
   def create
     @satellite = Satellite.new(satellite_params)
+    redirect_to ('/satellites')
   end
 
   def destroy
