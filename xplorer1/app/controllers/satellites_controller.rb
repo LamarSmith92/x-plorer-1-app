@@ -26,4 +26,5 @@ class SatellitesController < ApplicationController
     def post_params
       params.require(:satellite).permit(:name, :picture, :description)
     end
+
 end

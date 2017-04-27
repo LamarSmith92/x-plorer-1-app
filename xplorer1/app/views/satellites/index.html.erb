@@ -1,4 +1,21 @@
-<% @satellites.each do |satellite| %>
 
+<head>
+  <%= javascript_include_tag "application", "data-turbolinks-track": "reload" %>
+  <script  src="https://maps.googleapis.com/maps/api/js?key="></script>
+
+</head>
+
+<body>
+ 
+  <div>
+    <input type="textbox" id="address" value="San Francisco">
+     <input type="button" value="Encode" onclick="codeAddress()">
+  </div>
+  <div id="map" style="width: 400px; height: 400px"></div>
+  
+ <% @satellites.each do |satellite| %>
 <h1>Name: <%= satellite.name %></h1>
 <% end %>
+</body>
+
+
