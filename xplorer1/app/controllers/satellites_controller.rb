@@ -7,11 +7,15 @@ class SatellitesController < ApplicationController
 
   def show
     sat_id = params[:id]
-    @satellite = Satellite.find_by_id(sat_id)
+    @satellite = Satellite.find(sat_id)
   end
 
   def new
-    @satellite = Satellite.new
+    @satellite = Satellite.new(satellite_params)
+    if @satellite.save
+      flash[:notice] = "Satellite was added"
+      redirect_to satellite_path(@satellite)
+    end
   end
 
   def create

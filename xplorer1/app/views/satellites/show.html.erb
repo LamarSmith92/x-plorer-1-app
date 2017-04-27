@@ -1,2 +1,5 @@
-<h1>This is the ISS file and it's also working!</h1>
-<%= %>
+<h1>The Satellite#Show page is working!!</h1>
+<img src="<%= @satellite.picture %>">
+<p>Name: <% @satellite.name %></p>
+<p>Description:<%= @satellite.description%></p>
+<%= link_to "Back", satellites_path %>
