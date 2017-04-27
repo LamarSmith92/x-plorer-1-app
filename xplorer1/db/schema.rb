@@ -12,6 +12,7 @@
 
 ActiveRecord::Schema.define(version: 20170427173906) do
 
+
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -31,6 +32,8 @@ ActiveRecord::Schema.define(version: 20170427173906) do
     t.text     "description"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.float    "latitude"
+    t.float    "longitude"
   end
 
   create_table "users", force: :cascade do |t|

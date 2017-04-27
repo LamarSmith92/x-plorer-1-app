@@ -2,6 +2,8 @@ class SatellitesController < ApplicationController
 
   def  index
     @satellites = Satellite.all
+    cookies[:lat_lon] = JSON.generate([47.68, -122.37])
+
   end
 
   def show
@@ -16,19 +18,21 @@ class SatellitesController < ApplicationController
     def create
       @satellite = Satellite.new(satellite_params)
 
-
       if @satellite.save
         redirect_to @satellite
 else
   render 'new'
 end
+
     end
 
     def destroy
       @satellite = Satellite.find(params[:id])
       @satellite.destroy
 
+
       redirect_to satellites_path
+
     end
 
     private
