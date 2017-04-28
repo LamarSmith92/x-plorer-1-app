@@ -37,9 +37,16 @@ function initMap() {
     mapOptions);
 }
 
+
+
 $(document).on('ready page:load', function() {
   // Actions to do
+  setTimeout(function(){
   initMap();
+  getTheData();
+}, 100);
+
+
 });
 
 //GEOCODER
@@ -84,15 +91,15 @@ function getTheData() {
       issMarker.setPosition(markerForMap)
     } else {
       issMarker = new google.maps.Marker({
-      // and pass in the poistion
-      position: markerForMap,
-      map: map,
-      title: 'Satellite Live Tracking',
-      icon: issImage
-    });
-    map.setCenter(markerForMap);
+        // and pass in the poistion
+        position: markerForMap,
+        map: map,
+        title: 'ISS',
+        icon: issImage
+      });
+      map.setCenter(markerForMap);
+    }
   }
-}
 
   function onError(e1, e2, e3) {
     console.log("it didnt work", e1);
@@ -103,3 +110,26 @@ function getTheData() {
 }
 
 setInterval(getTheData, 3000);
+
+
+// var loadAPIPromise;
+// // Load API
+// function loadAPI(callback) {
+//   if (!loadAPIPromise) {
+//     var deferred = $.Deferred();
+//     $.ajax({
+//       url: 'https://maps.googleapis.com/maps/api/js?key=',
+//       dataType: "script",
+//       success: function() {
+//         google.load('maps', '3', {
+//           callback: function() {
+//             deferred.resolve();
+//           },
+//           other_params: 'sensor=false'
+//         });
+//       }
+//     });
+//     loadAPIPromise = deferred.promise();
+//   }
+//   loadAPIPromise.done(callback);
+// };
