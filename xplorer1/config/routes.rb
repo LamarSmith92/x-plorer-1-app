@@ -17,7 +17,7 @@ end
   get '/satellites/:id', to: 'satellites#show'
 
   #
-  # get '/satellites/:id/comments/new', to: 'comments#new'
+  #get '/satellites/:id/comments/new', to: 'comments#new'
   # post '/satellites/:id', to: 'comments#create'
   # delete '/satellites/:id', to: 'comments#destroy'
 end

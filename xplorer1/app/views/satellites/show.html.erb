@@ -1,4 +1,8 @@
 <h1>The Satellite#Show page is working!</h1>
+
+<%= image_tag @satellite.picture %>
+
 <p>Name: <% @satellite.name %></p>
+
 <p>Description:<%= @satellite.description%></p>
 <%= link_to "Back", satellites_path %>

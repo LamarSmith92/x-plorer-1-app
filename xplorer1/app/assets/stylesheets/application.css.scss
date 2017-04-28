@@ -41,3 +41,34 @@
   padding: 7px 9px;
 }
  /* end of css for sign in */
+
+ .map_container {
+ padding: 6px;
+ border-width: 1px;
+ border-style: solid;
+ border-color: #ccc #ccc #999 #ccc;
+ -webkit-box-shadow: rgba(64, 64, 64, 0.5) 0 2px 5px;
+ -moz-box-shadow: rgba(64, 64, 64, 0.5) 0 2px 5px;
+ box-shadow: rgba(64, 64, 64, 0.1) 0 2px 5px;
+ display: block;
+ }
+
+ .gmaps4rails_map {
+   display: block;
+   height: 25vw;
+ }
+ footer {
+    position: fixed;
+    height: 50px;
+    bottom: 0;
+    width: 100%;
+    background-color: #1b1b1b;
+  background-image: -moz-linear-gradient(top, #222222, #111111);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#222222), to(#111111));
+  background-image: -webkit-linear-gradient(top, #222222, #111111);
+  background-image: -o-linear-gradient(top, #222222, #111111);
+  background-image: linear-gradient(to bottom, #222222, #111111);
+  background-repeat: repeat-x;
+  border-color: #252525;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff222222', endColorstr='#ff111111', GradientType=0);
+}
