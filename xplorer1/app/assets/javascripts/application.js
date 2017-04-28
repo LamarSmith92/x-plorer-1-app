@@ -19,7 +19,7 @@
 var geocoder;
 var map;
 var markers = [];
-var issImage = 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png'; // TODO: lamar please change this to a small icon of ISS.
+var issImage = 'https://image.ibb.co/cxo9Qk/sat_x1_img.png'; // TODO: lamar please change this to a small icon of ISS.
 var issMarker;
 console.log("hello");
 
@@ -85,7 +85,7 @@ function getTheData() {
       // and pass in the poistion
       position: markerForMap,
       map: map,
-      title: 'This is the ISS',
+      title: 'Satellite Live Tracking',
       icon: issImage
     });
     map.setCenter(markerForMap);

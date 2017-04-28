@@ -122,3 +122,17 @@ position: fixed;
 .btn-primary{
   width: 5vw;
 }
+#content {
+    h1 {
+      font-weight: 500;
+    }
+    p {
+      font-size: 1.1em;
+      line-height: 1.75;
+    }
+    a {
+      color: #33acb7;
+      font-weight: 700;
+      text-decoration: none;
+    }
+  }
