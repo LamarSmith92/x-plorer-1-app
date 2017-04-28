@@ -12,7 +12,7 @@ end
     get 'users/index'
     root "satellites#index"
   # get '/satellites', to: 'satellites#index', as: 'satellites'
-   get '/satellites/:id', to: 'satellites#show'
+  # get '/satellites/:id', to: 'satellites#show'
 
   get '/satellites/:id', to: 'satellites#show'
 

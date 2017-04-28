@@ -8,38 +8,31 @@ class SatellitesController < ApplicationController
 
   def show
     sat_id = params[:id]
-    @satellite = Satellite.find_by_id(sat_id)
+    @satellite = Satellite.find(sat_id)
   end
 
   def new
-    @satellite = Satellite.new
+    @satellite = Satellite.new(satellite_params)
+    if @satellite.save
+      flash[:notice] = "Satellite was added"
+      redirect_to satellite_path(@satellite)
+    end
+  end
+  
+  def create
+    @satellite = Satellite.new(satellite_params)
+    redirect_to ('/satellites')
   end
 
-    def create
-      @satellite = Satellite.new(satellite_params)
+  def destroy
+    @satellite = Satellite.find(params[:id])
+    @satellite.destroy
+  end
 
-
-
-      if @satellite.save
-        redirect_to @satellite
-else
-  render 'new'
-end
-
-    end
-
-    def destroy
-      @satellite = Satellite.find(params[:id])
-      @satellite.destroy
-
-
-      redirect_to satellites_path
-
-    end
+>>>>>>> 46a9a8e0f08845d2e1eb75a982c29e6458951e3f
 
     private
     def post_params
       params.require(:satellite).permit(:name, :picture, :description)
     end
-
 end
