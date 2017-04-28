@@ -2,17 +2,25 @@
 
 <head>
   <%= javascript_include_tag "application", "data-turbolinks-track": "reload" %>
-  <script  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDmx9xhGJO7MH0SvP-HelDv9NaxTZKW5rg"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDmx9xhGJO7MH0SvP-HelDv9NaxTZKW5rg"></script>
 
 </head>
 
 <body>
 
-  <div>
-    <input type="textbox" id="address" value="San Francisco">
-     <input type="button" value="Encode" onclick="codeAddress()">
+  <form class="form-inline">
+  <div class="form-group">
+    <input type="textbox" id="address" class="form-control" value="San Francisco">
+     <input type="button" class="btn btn-primary btn-sm" value="Encode" onclick="codeAddress()">
   </div>
-  <div id="map" style="width: 400px; height: 400px"></div>
+</form>
+
+  <div class="map_container">
+    <div id="map" class="gmaps4rails_map">
+      <div id="map_canvas" class="span9">
+      </div>
+    </div>
+  </div>
 
 <% @satellites.each do |satellite| %>
 <h1>Name: <%= satellite.name %></h1>
