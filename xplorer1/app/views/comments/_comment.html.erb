@@ -1,0 +1,22 @@
+<div class="comment clearfix">
+  <div class="comment_content">
+    <p class="comment_name">
+      <strong>
+        <%= comment.title %></strong>
+    </p>
+    <p class="comment_body"><%= comment.content %></p>
+    <p class="comment_time"><%= time_ago_in_words(comment.created_at) %>Ago</p>
+
+  </div>
+  <% if user_signed_in? %>
+  <p><%= link_to 'Delete', [comment.satellite, comment],
+                  method: :delete,
+                  class: "button",
+                  data: { confirm: 'Are you sure?' } %>
+  </p>
+  <% else %>
+  <% flash.each do |key, value| %>
+        <div class="alert alert-<%= key %>"><%= value %></div>
+    </div>
+  <% end %>
+  <% end %>

@@ -12,9 +12,13 @@
  *
  *= require_tree .
  *= require_self
+ 
  */
 
  /* for sign in forms */
+ @import "users";
+  @import "satellites";
+ @import "normalize";
  .border-form-div {
   max-width: 300px;
   padding: 19px 29px 29px;

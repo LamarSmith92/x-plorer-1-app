@@ -2,16 +2,17 @@
 
 <head>
   <%= javascript_include_tag "application", "data-turbolinks-track": "reload" %>
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDmx9xhGJO7MH0SvP-HelDv9NaxTZKW5rg"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key="></script>
 
 </head>
 
 <body>
 
+<br>
   <form class="form-inline">
   <div class="form-group">
-    <input type="textbox" id="address" class="form-control" value="San Francisco">
-     <input type="button" class="btn btn-primary btn-sm" value="Encode" onclick="codeAddress()">
+    <input type="textbox" id="address" class="form-control">
+     <input type="button" class="btn btn-primary btn-sm" value="Go" onclick="codeAddress()">
   </div>
 </form>
 
@@ -23,8 +24,8 @@
   </div>
 
 <% @satellites.each do |satellite| %>
-<h1>Name: <%= satellite.name %></h1>
-<p>Description: <%= satellite.description %></p>
+<h1>Satellite: <%= satellite.name %></h1>
+<!-- <p>Description: <%= satellite.description %></p> -->
 <%= link_to "See More", "/satellites/#{satellite.id}" %>
 <% end %>
 
