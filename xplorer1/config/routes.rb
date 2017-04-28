@@ -12,8 +12,8 @@ end
   # get '/satellites', to: 'satellites#index', as: 'satellites'
   # get '/satellites/:id', to: 'satellites#show'
 
-  get '/satellites', to: 'satellites#index', as: 'satellites'
-  get '/satellites/:id', to: 'satellites#show'
+
+  get '/satellites/:id', to: 'satellites#show', as: 'satellite'
 
   #
   # get '/satellites/:id/comments/new', to: 'comments#new'
