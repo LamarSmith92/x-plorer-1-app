@@ -80,6 +80,7 @@ function getTheData() {
       lat: lat,
       lng: lng
     }
+
     if (issMarker) {
       issMarker.setPosition(markerForMap)
     } else {
@@ -87,12 +88,17 @@ function getTheData() {
       // and pass in the poistion
       position: markerForMap,
       map: map,
-      title: 'Satellite Live Tracking',
-      icon: issImage
+      title: 'ISS',
+      icon: issImage,
+      url: "/satellites/1"
     });
     map.setCenter(markerForMap);
   }
 }
+
+google.maps.event.addListener(issMarker, 'click', function(){
+  window.location.href = issMarker.url
+});
 
   function onError(e1, e2, e3) {
     console.log("it didnt work", e1);
@@ -101,5 +107,6 @@ function getTheData() {
 
   }
 }
+
 
 setInterval(getTheData, 3000);
