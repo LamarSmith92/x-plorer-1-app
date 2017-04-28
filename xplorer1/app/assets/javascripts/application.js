@@ -2,17 +2,18 @@
 // listed below.
 //
 // Any JavaScript/Coffee file within this directory, lib/assets/javascripts, vendor/assets/javascripts,
-// or any plugin's vendor/assets/javascripts directory can be referenced here using a relative path.
+// or vendor/assets/javascripts of plugins, if any, can be referenced here using a relative path.
 //
 // It's not advisable to add code directly here, but if you do, it'll appear at the bottom of the
-// compiled file. JavaScript code in this file should be added after the last require_* statement.
+// compiled file.
 //
-// Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
+// Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
 //
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
+//= require bootstrap-sprockets
 //= require_tree .
 
 var geocoder;
@@ -24,7 +25,7 @@ function initMap() {
   geocoder = new google.maps.Geocoder()
   var mapOptions = {
     center: new google.maps.LatLng(37.79, -122.40),
-    zoom: 6,
+    zoom: 2,
     mapTypeId: google.maps.MapTypeId.ROADMAP
   };
 
@@ -40,7 +41,6 @@ $(document).on('ready page:load', function() {
 
 //GEOCODER
 function codeAddress() {
-  console.log('You clicked me!');
   var address = document.getElementById('address').value;
   geocoder.geocode({
     'address': address
@@ -56,3 +56,41 @@ function codeAddress() {
     }
   });
 }
+
+function getTheData() {
+  $.ajax({
+    method: 'get',
+    url: 'http://api.open-notify.org/iss-now.json',
+    success: onSuccess,
+    error: onError
+  })
+
+  function onSuccess(json) {
+
+    //get the data we want and parseFloat
+    var whatWeWant = json.iss_position;
+    lat = parseFloat(whatWeWant.latitude);
+    lng = parseFloat(whatWeWant.longitude);
+
+    //set the marker to the way google map wants it
+    var markerForMap = {
+      lat: lat,
+      lng: lng
+    }
+    var marker = new google.maps.Marker({
+      // and pass in the poistion
+      position: markerForMap,
+      map: map,
+      title: 'This is the ISS'
+    });
+  }
+
+  function onError(e1, e2, e3) {
+    console.log("it didnt work", e1);
+    console.log("it didnt work", e2);
+    console.log("it didnt work", e3);
+
+  }
+}
+
+setInterval(getTheData, 5000);
