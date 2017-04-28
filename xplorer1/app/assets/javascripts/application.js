@@ -2,35 +2,37 @@
 // listed below.
 //
 // Any JavaScript/Coffee file within this directory, lib/assets/javascripts, vendor/assets/javascripts,
-// or any plugin's vendor/assets/javascripts directory can be referenced here using a relative path.
+// or vendor/assets/javascripts of plugins, if any, can be referenced here using a relative path.
 //
 // It's not advisable to add code directly here, but if you do, it'll appear at the bottom of the
-// compiled file. JavaScript code in this file should be added after the last require_* statement.
+// compiled file.
 //
-// Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
+// Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
 //
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
+//= require bootstrap-sprockets
 //= require_tree .
 
 var geocoder;
 var map;
 var markers = [];
+var issImage = 'https://image.ibb.co/cxo9Qk/sat_x1_img.png'; // TODO: lamar please change this to a small icon of ISS.
+var issMarker;
 console.log("hello");
 
 function initMap() {
   geocoder = new google.maps.Geocoder()
   var mapOptions = {
     center: new google.maps.LatLng(37.79, -122.40),
-    zoom: 6,
+    zoom: 4,
     mapTypeId: google.maps.MapTypeId.ROADMAP
   };
 
   map = new google.maps.Map(document.getElementById("map"),
     mapOptions);
-
 }
 
 $(document).on('ready page:load', function() {
@@ -40,7 +42,6 @@ $(document).on('ready page:load', function() {
 
 //GEOCODER
 function codeAddress() {
-  console.log('You clicked me!');
   var address = document.getElementById('address').value;
   geocoder.geocode({
     'address': address
@@ -56,3 +57,47 @@ function codeAddress() {
     }
   });
 }
+
+function getTheData() {
+  $.ajax({
+    method: 'get',
+    url: 'http://api.open-notify.org/iss-now.json',
+    success: onSuccess,
+    error: onError
+  })
+
+  function onSuccess(json) {
+
+    //get the data we want and parseFloat
+    var whatWeWant = json.iss_position;
+    lat = parseFloat(whatWeWant.latitude);
+    lng = parseFloat(whatWeWant.longitude);
+
+    //set the marker to the way google map wants it
+    var markerForMap = {
+      lat: lat,
+      lng: lng
+    }
+    if (issMarker) {
+      issMarker.setPosition(markerForMap)
+    } else {
+      issMarker = new google.maps.Marker({
+      // and pass in the poistion
+      position: markerForMap,
+      map: map,
+      title: 'Satellite Live Tracking',
+      icon: issImage
+    });
+    map.setCenter(markerForMap);
+  }
+}
+
+  function onError(e1, e2, e3) {
+    console.log("it didnt work", e1);
+    console.log("it didnt work", e2);
+    console.log("it didnt work", e3);
+
+  }
+}
+
+setInterval(getTheData, 3000);
