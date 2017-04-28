@@ -16,7 +16,6 @@
 
 <% @satellites.each do |satellite| %>
 <h1>Name: <%= satellite.name %></h1>
-<%= image_tag satellite.picture %>
 <p>Description: <%= satellite.description %></p>
 <%= link_to "See More", "/satellites/#{satellite.id}" %>
 <% end %>
