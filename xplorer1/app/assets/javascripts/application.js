@@ -38,9 +38,16 @@ function initMap() {
 };
 
 
+
+
 $(document).on('ready page:load', function() {
   // Actions to do
+  setTimeout(function(){
   initMap();
+  getTheData();
+}, 100);
+
+
 });
 
 //GEOCODER
@@ -116,8 +123,8 @@ function getTheData() {
       url: "/satellites/1"
     });
     map.setCenter(markerForMap);
+
   }
-}
 
 google.maps.event.addListener(issMarker, 'click', function(){
   window.location.href = issMarker.url
@@ -135,3 +142,26 @@ google.maps.event.addListener(issMarker, 'click', function(){
 
 
 setInterval(getTheData, 3000);
+
+
+// var loadAPIPromise;
+// // Load API
+// function loadAPI(callback) {
+//   if (!loadAPIPromise) {
+//     var deferred = $.Deferred();
+//     $.ajax({
+//       url: 'https://maps.googleapis.com/maps/api/js?key=',
+//       dataType: "script",
+//       success: function() {
+//         google.load('maps', '3', {
+//           callback: function() {
+//             deferred.resolve();
+//           },
+//           other_params: 'sensor=false'
+//         });
+//       }
+//     });
+//     loadAPIPromise = deferred.promise();
+//   }
+//   loadAPIPromise.done(callback);
+// };
