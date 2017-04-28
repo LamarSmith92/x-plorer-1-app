@@ -3,6 +3,7 @@ class SatellitesController < ApplicationController
   def  index
     @satellites = Satellite.all
     cookies[:lat_lon] = JSON.generate([47.68, -122.37])
+
   end
 
   def show
@@ -17,6 +18,8 @@ class SatellitesController < ApplicationController
       redirect_to satellite_path(@satellite)
     end
   end
+
+
 
   def create
     @satellite = Satellite.new(satellite_params)
