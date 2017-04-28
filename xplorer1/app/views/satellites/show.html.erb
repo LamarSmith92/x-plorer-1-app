@@ -1,8 +1,13 @@
-<h1>The Satellite#Show page is working!</h1>
+<body id=isspage>
 
-<%= image_tag @satellite.picture %>
+  <h1 id=isstitle>The International Space Station</h1>
 
-<p>Name: <% @satellite.name %></p>
+  <%= image_tag @satellite.picture %>
 
-<p>Description:<%= @satellite.description%></p>
-<%= link_to "Back", satellites_path %>
+  <p>Name: <%= @satellite.name %></p>
+
+
+  <p>Description: <%= @satellite.description%></p>
+  <%= link_to "Back", satellites_path %>
+  
+</body>
