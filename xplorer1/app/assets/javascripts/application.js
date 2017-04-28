@@ -19,6 +19,8 @@
 var geocoder;
 var map;
 var markers = [];
+var issImage = 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png'; // TODO: lamar please change this to a small icon of ISS.
+var issMarker;
 console.log("hello");
 
 function initMap() {
@@ -31,7 +33,6 @@ function initMap() {
 
   map = new google.maps.Map(document.getElementById("map"),
     mapOptions);
-
 }
 
 $(document).on('ready page:load', function() {
@@ -77,13 +78,18 @@ function getTheData() {
       lat: lat,
       lng: lng
     }
-    var marker = new google.maps.Marker({
+    if (issMarker) {
+      issMarker.setPosition(markerForMap)
+    } else {
+      issMarker = new google.maps.Marker({
       // and pass in the poistion
       position: markerForMap,
       map: map,
-      title: 'This is the ISS'
+      title: 'This is the ISS',
+      icon: issImage
     });
   }
+}
 
   function onError(e1, e2, e3) {
     console.log("it didnt work", e1);
