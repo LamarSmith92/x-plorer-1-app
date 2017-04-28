@@ -27,7 +27,9 @@ function initMap() {
   geocoder = new google.maps.Geocoder()
   var mapOptions = {
     center: new google.maps.LatLng(37.79, -122.40),
+
     zoom: 3,
+
     mapTypeId: google.maps.MapTypeId.ROADMAP
   };
 
