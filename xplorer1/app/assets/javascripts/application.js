@@ -42,10 +42,10 @@ function initMap() {
 
 $(document).on('ready page:load', function() {
   // Actions to do
-  setTimeout(function(){
-  initMap();
-  getTheData();
-}, 100);
+  setTimeout(function() {
+    initMap();
+    getTheData();
+  }, 100);
 
 
 });
@@ -100,7 +100,13 @@ function getTheData() {
     // Give the line an opacity of 0.
     // Repeat the symbol at intervals of 20 pixels to create the dashed effect.
     var line = new google.maps.Polyline({
-      path: [{lat, lng}, {lat, lng}],
+      path: [{
+        lat,
+        lng
+      }, {
+        lat,
+        lng
+      }],
       strokeOpacity: 0,
       icons: [{
         icon: lineSymbol,
@@ -112,56 +118,30 @@ function getTheData() {
 
 
     if (issMarker) {
-    issMarker.setPosition(markerForMap)
+      issMarker.setPosition(markerForMap)
     } else {
       issMarker = new google.maps.Marker({
-      // and pass in the poistion
-      position: markerForMap,
-      map: map,
-      title: 'ISS',
-      icon: issImage,
-      url: "/satellites/1"
-    });
-    map.setCenter(markerForMap);
+        // and pass in the poistion
+        position: markerForMap,
+        map: map,
+        title: 'ISS',
+        icon: issImage,
+        url: "/satellites/1"
+      });
+      map.setCenter(markerForMap);
 
+    }
+
+    google.maps.event.addListener(issMarker, 'click', function() {
+      window.location.href = issMarker.url
+    });
   }
 
-google.maps.event.addListener(issMarker, 'click', function(){
-  window.location.href = issMarker.url
-});
-
-
-
-
-}
-function onError(e1, e2, e3) {
-  console.log("it didnt work", e1);
-  console.log("it didnt work", e2);
-  console.log("it didnt work", e3);
-
+  function onError(e1, e2, e3) {
+    console.log("it didnt work e1", e1);
+    console.log("it didnt work e2", e2);
+    console.log("it didnt work e3", e3);
+  }
 }
 
 setInterval(getTheData, 3000);
-};
-
-// var loadAPIPromise;
-// // Load API
-// function loadAPI(callback) {
-//   if (!loadAPIPromise) {
-//     var deferred = $.Deferred();
-//     $.ajax({
-//       url: 'https://maps.googleapis.com/maps/api/js?key=',
-//       dataType: "script",
-//       success: function() {
-//         google.load('maps', '3', {
-//           callback: function() {
-//             deferred.resolve();
-//           },
-//           other_params: 'sensor=false'
-//         });
-//       }
-//     });
-//     loadAPIPromise = deferred.promise();
-//   }
-//   loadAPIPromise.done(callback);
-// };
