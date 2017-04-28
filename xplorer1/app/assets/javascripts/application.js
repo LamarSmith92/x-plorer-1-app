@@ -27,7 +27,7 @@ function initMap() {
   geocoder = new google.maps.Geocoder()
   var mapOptions = {
     center: new google.maps.LatLng(37.79, -122.40),
-    zoom: 2,
+    zoom: 4,
     mapTypeId: google.maps.MapTypeId.ROADMAP
   };
 
@@ -88,6 +88,7 @@ function getTheData() {
       title: 'This is the ISS',
       icon: issImage
     });
+    map.setCenter(markerForMap);
   }
 }
 
@@ -99,4 +100,4 @@ function getTheData() {
   }
 }
 
-setInterval(getTheData, 5000);
+setInterval(getTheData, 3000);
