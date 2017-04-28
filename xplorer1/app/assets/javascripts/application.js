@@ -19,19 +19,20 @@
 var geocoder;
 var map;
 var markers = [];
+var issImage = 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png'; // TODO: lamar please change this to a small icon of ISS.
+var issMarker;
 console.log("hello");
 
 function initMap() {
   geocoder = new google.maps.Geocoder()
   var mapOptions = {
     center: new google.maps.LatLng(37.79, -122.40),
-    zoom: 2,
+    zoom: 4,
     mapTypeId: google.maps.MapTypeId.ROADMAP
   };
 
   map = new google.maps.Map(document.getElementById("map"),
     mapOptions);
-
 }
 
 $(document).on('ready page:load', function() {
@@ -77,13 +78,19 @@ function getTheData() {
       lat: lat,
       lng: lng
     }
-    var marker = new google.maps.Marker({
+    if (issMarker) {
+      issMarker.setPosition(markerForMap)
+    } else {
+      issMarker = new google.maps.Marker({
       // and pass in the poistion
       position: markerForMap,
       map: map,
-      title: 'This is the ISS'
+      title: 'This is the ISS',
+      icon: issImage
     });
+    map.setCenter(markerForMap);
   }
+}
 
   function onError(e1, e2, e3) {
     console.log("it didnt work", e1);
@@ -93,4 +100,4 @@ function getTheData() {
   }
 }
 
-setInterval(getTheData, 5000);
+setInterval(getTheData, 3000);
