@@ -35,7 +35,8 @@ function initMap() {
 
   map = new google.maps.Map(document.getElementById("map"),
     mapOptions);
-}
+};
+
 
 
 
@@ -87,19 +88,49 @@ function getTheData() {
       lat: lat,
       lng: lng
     }
+
+    // Define a symbol using SVG path notation, with an opacity of 1.
+    var lineSymbol = {
+      path: 'M 0,-1 0,1',
+      strokeOpacity: 1,
+      scale: 1
+    };
+
+    // Create the polyline, passing the symbol in the 'icons' property.
+    // Give the line an opacity of 0.
+    // Repeat the symbol at intervals of 20 pixels to create the dashed effect.
+    var line = new google.maps.Polyline({
+      path: [{lat, lng}, {lat, lng}],
+      strokeOpacity: 0,
+      icons: [{
+        icon: lineSymbol,
+        offset: '0',
+        repeat: '10px'
+      }],
+      map: map
+    });
+
+
     if (issMarker) {
-      issMarker.setPosition(markerForMap)
+    issMarker.setPosition(markerForMap)
     } else {
       issMarker = new google.maps.Marker({
-        // and pass in the poistion
-        position: markerForMap,
-        map: map,
-        title: 'ISS',
-        icon: issImage
-      });
-      map.setCenter(markerForMap);
-    }
+      // and pass in the poistion
+      position: markerForMap,
+      map: map,
+      title: 'ISS',
+      icon: issImage,
+      url: "/satellites/1"
+    });
+    map.setCenter(markerForMap);
+
   }
+
+google.maps.event.addListener(issMarker, 'click', function(){
+  window.location.href = issMarker.url
+});
+
+
 
   function onError(e1, e2, e3) {
     console.log("it didnt work", e1);
@@ -108,6 +139,7 @@ function getTheData() {
 
   }
 }
+
 
 setInterval(getTheData, 3000);
 
