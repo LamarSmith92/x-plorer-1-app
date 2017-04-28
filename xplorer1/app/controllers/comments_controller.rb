@@ -12,8 +12,8 @@ class CommentsController < ApplicationController
     redirect_to satellite_path(@satellite)
   else
     render 'new'
+    end
   end
-end
 
   def destroy
   @comment.destroy
@@ -28,10 +28,10 @@ end
 
   def find_comment
     @comment = @satellite.comments.find(params[:id])
-end
+  end
 
   def comment_owner
     unless current_user.id == @comment.user_id
-end
-end
+    end
+  end
 end

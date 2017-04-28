@@ -14,9 +14,6 @@
                   class: "button",
                   data: { confirm: 'Are you sure?' } %>
   </p>
-  <% else %>
-  <% flash.each do |key, value| %>
-        <div class="alert alert-<%= key %>"><%= value %></div>
-    </div>
   <% end %>
-  <% end %>
+
+  
