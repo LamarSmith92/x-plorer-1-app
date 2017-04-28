@@ -132,17 +132,17 @@ google.maps.event.addListener(issMarker, 'click', function(){
 
 
 
-  function onError(e1, e2, e3) {
-    console.log("it didnt work", e1);
-    console.log("it didnt work", e2);
-    console.log("it didnt work", e3);
 
-  }
+}
+function onError(e1, e2, e3) {
+  console.log("it didnt work", e1);
+  console.log("it didnt work", e2);
+  console.log("it didnt work", e3);
+
 }
 
-
 setInterval(getTheData, 3000);
-
+};
 
 // var loadAPIPromise;
 // // Load API
