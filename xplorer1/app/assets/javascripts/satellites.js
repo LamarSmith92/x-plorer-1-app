@@ -11,18 +11,13 @@ function initMap() {
   geocoder = new google.maps.Geocoder()
   var mapOptions = {
     center: new google.maps.LatLng(37.79, -122.40),
-
-    zoom: 5,
-
-    mapTypeId: google.maps.MapTypeId.ROADMAP
+    zoom: 6,
+    mapTypeId: 'satellite'
   };
 
   map = new google.maps.Map(document.getElementById("map"),
     mapOptions);
 };
-
-
-
 
 $(document).on('ready page:load', function() {
   // Actions to do
@@ -30,8 +25,6 @@ $(document).on('ready page:load', function() {
     initMap();
     getTheData();
   }, 100);
-
-
 });
 
 //GEOCODER
@@ -113,7 +106,6 @@ function getTheData() {
         url: "/satellites/1"
       });
       map.setCenter(markerForMap);
-
     }
 
     google.maps.event.addListener(issMarker, 'click', function() {
