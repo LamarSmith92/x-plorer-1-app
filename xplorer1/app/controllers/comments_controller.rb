@@ -2,6 +2,9 @@ class CommentsController < ApplicationController
   before_action :find_satellite
   before_action :find_comment, only: [:destroy, :comment_owner]
   before_action :comment_owner, only: [:destroy]
+  def index
+    @comments = Comment.all.order('created_at DESC')
+  end
   def create
     @satellite = Satellite.find(params[:satellite_id])
     @comment = @satellite.comments.create(params[:comment].permit(:title, :content))

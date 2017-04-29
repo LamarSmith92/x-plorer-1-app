@@ -7,6 +7,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @user_comments = @user.comments
   end
+  
   def update
     @user = User.find(params[:id])
       if @user.update_attributes(secure_params)
