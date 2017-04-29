@@ -19,12 +19,18 @@ function initMap() {
     mapOptions);
 };
 
-$(document).on('ready page:load', function() {
+$(document).on('ready', function() {
+
   // Actions to do
   setTimeout(function() {
     initMap();
     getTheData();
   }, 100);
+
+
+setInterval(getTheData, 1500);
+
+
 });
 
 //GEOCODER
@@ -119,5 +125,3 @@ function getTheData() {
     console.log("it didnt work e3", e3);
   }
 }
-
-setInterval(getTheData, 1500);
