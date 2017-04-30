@@ -2,8 +2,41 @@
 
 <h1 id=isstitle>The International Space Station</h1>
 
-  <%= image_tag @satellite.picture %>
 
+<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+<!-- Indicators -->
+<ol class="carousel-indicators">
+  <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+  <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+  <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+</ol>
+
+<!-- Wrapper for slides -->
+<div class="carousel-inner">
+  <div class="item active">
+    <%= image_tag @satellite.picture %>
+  </div>
+  <div class="item">
+    <%= image_tag 'http://i.imgur.com/wwtEIsf.jpg?1' %>
+  </div>
+  <div class="item">
+    <%= image_tag 'http://i.imgur.com/ZwM2quz.jpg?1' %>
+  </div>
+  <div class="item">
+    <%= image_tag 'http://i.imgur.com/la3UOok.jpg?1' %>
+  </div>
+
+  ...
+</div>
+
+<!-- Controls -->
+<a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+  <span class="glyphicon glyphicon-chevron-left"></span>
+</a>
+<a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+  <span class="glyphicon glyphicon-chevron-right"></span>
+</a>
+</div>
   <% @satellite.name %></p>
 
   <p>Description:<%= @satellite.description%></p>
@@ -12,7 +45,6 @@
 <%= link_to "Back", satellites_path %>
 <%= render "comments/form" %>
 
-  
-  
-</body>
 
+
+</body>
