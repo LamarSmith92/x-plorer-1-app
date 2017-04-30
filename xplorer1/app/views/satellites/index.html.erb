@@ -16,7 +16,7 @@
   </div>
 
 <% @satellites.each do |satellite| %>
-<h1>Satellite: <%= satellite.name %></h1>
+<h1> <%= satellite.name %></h1>
 <!-- <p>Description: <%= satellite.description %></p> -->
 <%= link_to "See More", "/satellites/#{satellite.id}" %>
 <% end %>
