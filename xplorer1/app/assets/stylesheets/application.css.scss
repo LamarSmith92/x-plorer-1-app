@@ -18,6 +18,8 @@
  /* for sign in forms */
 
  @import "normalize";
+ @import "satellites";
+ @import "comments";
 
  .border-form-div {
   max-width: 300px;
@@ -45,22 +47,15 @@
   padding: 7px 9px;
 }
  /* end of css for sign in */
-
- .map_container {
-
- border-width: 1px;
- border-style: solid;
- border-color: #ccc #ccc #999 #ccc;
- -webkit-box-shadow: rgba(64, 64, 64, 0.5) 0 2px 5px;
- -moz-box-shadow: rgba(64, 64, 64, 0.5) 0 2px 5px;
- box-shadow: rgba(64, 64, 64, 0.1) 0 2px 5px;
- display: block;
+ #map {
+     height: 40vw;
+     width: 100%;
+     left: 0;
+     position: absolute;
+     top: 0;
  }
 
- .gmaps4rails_map {
-   height: 60vw;
 
- }
  footer {
     position: fixed;
     height: 50px;

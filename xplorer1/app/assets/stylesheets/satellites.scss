@@ -1,3 +1,90 @@
-// Place all the styles related to the satellites controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.post-single {
+margin-top: 40px;
+padding-bottom: 40px;
+border-bottom: 1px solid #f0f0f0;
+}
+.post-single:last-child {
+border-bottom: none !important;
+}
+.post-single .date-title .date {
+display: block;
+width: 100px;
+float: left;
+position: relative;
+}
+.post-single .date-title .date strong {
+color: #d373a1;
+font-size: 32px;
+border-right: 1px solid #f0f0f0;
+padding: 10px;
+}
+.post-single .date-title .date p {
+position: absolute;
+display: block;
+margin: 0;
+text-align: center;
+right: 0;
+top: 0;
+text-transform: uppercase;
+}
+.post-single .date-title .title {
+margin: 0;
+padding: 0;
+margin-top: 0px;
+padding-left: 10px;
+overflow: hidden;
+}
+.post-single .date-title .title h2 {
+margin-top: 0;
+color: #333;
+}
+.post-single .date-title .title h2 a {
+color: #333;
+text-decoration: none;
+}
+.post-single .date-title .title h2 a:hover {
+color: #d373a1;
+}
+.post-single .featured-image {
+margin-top: 20px;
+}
+.post-single .post-info {
+color: #999;
+padding: 10px 0;
+}
+.post-single .post-info a {
+color: #999;
+text-decoration: none;
+}
+.post-single .post-info a i {
+color: #d373a1;
+}
+.post-single .post-content {
+font-size: 14px;
+line-height: 24px;
+color: #666;
+margin-bottom: 20px;
+}
+.btn {
+border: 1px solid #f0f0f0;
+font-size: 16px;
+border-radius: 20px;
+padding: 8px 15px;
+-webkit-transition: 0.4s ease-in-out;
+-moz-transition: 0.4s ease-in-out;
+-ms-transition: 0.4s ease-in-out;
+transition: 0.4s ease-in-out;
+color: #666;
+}
+.btn:hover {
+border-color: #d373a1;
+}
+
+.btn-theme {
+background: #d373a1;
+color: #fff;
+border-color: #d373a1;
+}
+.btn-theme:hover {
+color: #fff;
+}

@@ -1,22 +1,32 @@
-<div class="comment clearfix">
-  <div class="comment_content">
-    <p class="comment_name">
-      <strong>
 
-        <%= comment.title %></strong>
-    </p>
-    <p class="comment_body"><%= comment.content %></p>
-    <p class="comment_time"><%= time_ago_in_words(comment.created_at) %>Ago</p>
+<div class="container bootstrap snippet">
+    <div class="col-sm-8">
+        <div class="panel panel-white post panel-shadow">
+            <div class="post-heading">
+                <div class="pull-left image">
+                    <img src="http://bootdey.com/img/Content/user_1.jpg" class="img-circle avatar" alt="user profile image">
+                </div>
+                <div class="pull-left meta">
+                    <div class="title h5">
+                        <a href="#"><b>name here</b></a>
+                        made a post.
+                    </div>
+                    <h6 class="text-muted time"><%= time_ago_in_words(comment.created_at) %>Ago</h6>
+                </div>
+            </div>
+            <div class="post-description">
+                <p><%= comment.content %></p>
+                <div class="stats">
+                    <% if user_signed_in? %>
+                    <%= link_to 'Delete', [comment.satellite, comment],
+                                    method: :delete,
+                                    class: "button"%>
 
-  </div>
-  <% if user_signed_in? %>
-  <p><%= link_to 'Delete', [comment.satellite, comment],
-                  method: :delete,
-                  class: "button"%>
-  </p>
-  <% else %>
-  <% flash.each do |key, value| %>
-        <div class="alert alert-<%= key %>"><%= value %></div>
-    </div>
-  <% end %>
+
+                </div>
+                </div>
+                </div>
+                </div>
+            </div>
+            <br>
   <% end %>

@@ -1,7 +1,8 @@
 class CommentsController < ApplicationController
+
   before_action :find_satellite
   before_action :find_comment, only: [:destroy, :comment_owner]
-  before_action :comment_owner, only: [:destroy]
+  before_action :comment_owner, only: [:destroy, :first_name]
   def index
     @comments = Comment.all.order('created_at DESC')
   end
@@ -15,8 +16,9 @@ class CommentsController < ApplicationController
     redirect_to satellite_path(@satellite)
   else
     render 'new'
+    end
   end
-end
+
 
   def destroy
   @comment.destroy
@@ -31,10 +33,10 @@ end
 
   def find_comment
     @comment = @satellite.comments.find(params[:id])
-end
+  end
 
   def comment_owner
     unless current_user.id == @comment.user_id
-end
-end
+    end
+  end
 end

@@ -1,14 +1,24 @@
 <%= form_for [@satellite, @satellite.comments.build] do |f| %>
-  <p>
+<div class="container pb-cmnt-container">
+    <div class="row">
+        <div class="col-sm-8">
+            <div class="panel panel-info">
+                <div class="panel-body">
+                  <h3>Write Comment!</h3>
+                  <%= f.label :title %><br>
+                  <%= f.text_field :title, minimum: 5 %><br>
+                  <%= f.label :content %>
+                  <br>
+                  <%= f.text_area :content, class:"pb-cmnt-textarea" %>
 
-    <%= f.label :title %><br>
-    <%= f.text_field :title, minimum: 5 %><br>
-  </p>
-  <p>
-    <%= f.label :content %><br>
-    <%= f.text_area :content %><br>
-  </p>
-    <%= f.submit %>
+                    <form class="">
+                      <%= f.submit  %>
 
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 <% end %>
