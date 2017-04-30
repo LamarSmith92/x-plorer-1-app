@@ -18,6 +18,8 @@
  /* for sign in forms */
 
  @import "normalize";
+ @import "satellites";
+ @import "comments";
 
  main{
    background-color: black;
@@ -52,25 +54,17 @@
   margin-bottom: 15px;
   padding: 7px 9px;
 }
- /* end of css for sign in */
 
- .map_container {
- padding: 6px;
- border-width: 1px;
- border-style: solid;
- border-color: #ccc #ccc #999 #ccc;
- -webkit-box-shadow: rgba(64, 64, 64, 0.5) 0 2px 5px;
- -moz-box-shadow: rgba(64, 64, 64, 0.5) 0 2px 5px;
- box-shadow: rgba(64, 64, 64, 0.1) 0 2px 5px;
- display: block;
- background-color: black;
+ #map {
+     height: 40vw;
+     width: 100%;
+     left: 0;
+     position: absolute;
+     top: 0;
 
  }
 
- .gmaps4rails_map {
-   display: block;
-   height: 25vw;
- }
+
  footer {
    background-image: url(http://i.imgur.com/pzThpR1.jpg);
    background-position: center;
