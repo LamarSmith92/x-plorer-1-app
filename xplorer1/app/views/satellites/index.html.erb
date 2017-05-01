@@ -22,12 +22,17 @@
 
 
 
+  <input id="Hide ISS" type="button" value="hide ISS" onclick="hideIssMarker();" />
+  <input id="Show ISS" type="button" value="show ISS" onclick="showIssMarker();" />
+
+
 </body>
 
 <script>
   var geocoder,
       map,
       markers = [],
+      id,
       issImage = 'https://image.ibb.co/cxo9Qk/sat_x1_img.png',
       issMarker,
       fakeMarker1,
@@ -178,9 +183,11 @@
           map: map,
           title: 'ISS',
           icon: issImage,
-          url: "/satellites/1"
+          url: "/satellites/1",
+          id: "1"
         });
         map.setCenter(markerForMap);
+
       }
 
       google.maps.event.addListener(issMarker, 'click', function () {
@@ -195,6 +202,13 @@
     }
   }
 
+  function hideIssMarker() {
+    issMarker.setMap(null);
+  }
+
+  function showIssMarker(){
+    issMarker.setMap(map);
+  }
 
     function generateFakeData(num) {
     //generate the latitude
