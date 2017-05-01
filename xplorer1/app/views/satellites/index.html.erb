@@ -23,6 +23,7 @@
       issMarker,
       fakeMarker1,
       fakeMarker2,
+      fakeMarker3,
       fakeLat,
       fakeLng;
 
@@ -139,6 +140,24 @@
         });
       }
 
+      var fakeMarker = {
+        lat : fakeLat,
+        lng : fakeLng
+      }
+      generateFakeData(-15);
+
+      if (fakeMarker3){
+        fakeMarker3.setPosition(fakeMarker)
+      } else {
+        fakeMarker3 = new google.maps.Marker({
+          position: fakeMarker,
+          map: map,
+          title: 'this is a fake satellite',
+          icon: issImage
+        });
+      }
+
+
 
       //adding the iss marker in the map, the if statement only shows on maker
       if (issMarker) {
@@ -188,6 +207,6 @@
   }
 </script>
 
-<%# TODO: change the icon for the other two satellites %>
-<%# TODO: add a third set of fake data %>
+<%# TODO: change the icon for the other three satellites %>
 <%# TODO: add the SES-I space station, it is a geostationary we also need an icon for it as well %>
+<%# TODO: show a list of the satellites on the side of the map and only show one when you select a specific satellite %>
