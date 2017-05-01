@@ -1,6 +1,6 @@
 <%= form_for @user,  html: { multipart: true } do |f| %>
 <div id="content">
-  <%= full_name %>
+  <%= full_name current_user %>
 
 </div>
 <% end %>

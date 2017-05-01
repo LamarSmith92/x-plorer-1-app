@@ -13,7 +13,7 @@
         <!-- SIDEBAR USER TITLE -->
         <div class="profile-usertitle">
           <div class="profile-usertitle-name">
-            <%= full_name %>
+            <%= full_name current_user %>
           </div>
 
         </div>
@@ -55,7 +55,7 @@
     </div>
     <div class="col-md-9">
       <div class="profile-content">
-          <h2><%= full_name %></h2>
+          <h2><%= full_name current_user %></h2>
           <hr>
           <p>
         <%= @user.about %>
