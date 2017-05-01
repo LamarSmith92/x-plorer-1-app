@@ -12,15 +12,11 @@
  *
  *= require_tree .
  *= require_self
-
  */
-
  /* for sign in forms */
-
  @import "normalize";
  @import "satellites";
  @import "comments";
-
 
 
  .border-form-div {
@@ -48,7 +44,7 @@
   margin-bottom: 15px;
   padding: 7px 9px;
 }
-
+ /* end of css for sign in */
  #map {
      height: 40vw;
      width: 70%;
@@ -83,4 +79,5 @@
   // background-repeat: repeat-x;
   // border-color: #252525;
   // filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff222222', endColorstr='#ff111111', GradientType=0);
+
 }
