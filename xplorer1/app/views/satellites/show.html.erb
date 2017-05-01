@@ -39,13 +39,6 @@
   <span class="glyphicon glyphicon-chevron-right"></span>
 </a>
 </div>
-  <% @satellite.name %></p>
-
-  <p>Description:<%= @satellite.description%></p>
-  <%= render @satellite.comments %>
-<h4><%= @satellite.comments.count %> Comments </h4>
-<%= link_to "Back", satellites_path %>
-<%= render "comments/form" %>
 
 <div class="post-content">
 <p><strong>Description</strong> <br><%= @satellite.description%></p>
@@ -59,4 +52,3 @@
 
 
 </body>
-
