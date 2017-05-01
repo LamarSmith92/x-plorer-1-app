@@ -13,7 +13,7 @@
     </p>
 <% @satellites.each do |satellite| %>
 <h1 class="issheading"><%= satellite.name %></h1>
-<p>Description: <%= satellite.description %></p> 
+<p>Description: <%= satellite.description %></p>
   <%= link_to "See More", "/satellites/#{satellite.id}" %>
   <% end %>
   </div>
