@@ -51,23 +51,29 @@
 
  #map {
      height: 40vw;
-     width: 100%;
+     width: 70%;
      left: 0;
      position: fixed;
-     top: 0;
-
-
+     top: 25px;
  }
 
+ .satellitelist {
+   padding-top: 1%;
+ }
 
- footer {
+ #footer {
    background-image: url(http://i.imgur.com/pzThpR1.jpg);
    background-position: center;
-   color: white;
-    position: fixed;
-    height: 50px;
-    bottom: 0;
-    width: 100%;
+   font-family: 'Share Tech Mono', monospace;
+    // position: fixed;
+  height: 60px;
+  bottom: 0px;
+  width: 100%;
+  font-size: 20px;
+  color: white;
+  display: inline-block;
+  text-align: center;
+
   //   background-color: #1b1b1b;
   // background-image: -moz-linear-gradient(top, #222222, #111111);
   // background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#222222), to(#111111));

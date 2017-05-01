@@ -4,14 +4,23 @@
 
 <body>
 
-  <div id="map" class="gmaps4rails_map" allowfullscreen></div>
-
-  <% @satellites.each do |satellite| %>
-  <h1>
-    <%= satellite.name %></h1>
+  <div class="satellitelist">
+    <h1 class="welcomeheading">
+       Welcome to Explorer1
+    </h1>
+    <p class="welcomeintro">
+      Where we track the International Space Station in real time.
+    </p>
+  <!-- <% @satellites.each do |satellite| %> -->
+  <!-- <h1 class="issheading"><%= satellite.name %></h1> -->
   <!-- <p>Description: <%= satellite.description %></p> -->
   <%= link_to "See More", "/satellites/#{satellite.id}" %>
   <% end %>
+  </div>
+
+  <div id="map" class="gmaps4rails_map" allowfullscreen></div>
+
+
 
 </body>
 
