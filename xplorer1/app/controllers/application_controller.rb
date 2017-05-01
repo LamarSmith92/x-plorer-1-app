@@ -8,8 +8,10 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:sign_up) { |u| u.permit(:first_name, :last_name,  :birthday, :email, :password, :birthday, :city, :state, :birthday, :remember_me)}
     devise_parameter_sanitizer.permit(:sign_in) { |u| u.permit(:email, :password, :remember_me)}
     devise_parameter_sanitizer.permit(:account_update) { |u| u.permit(:first_name, :last_name, :birthday, :email, :password, :about, :current_password, :remember_me)}
+    redirect_to user_path(@user.id)
+
   end
-  
+
   private
   def after_sign_out_path_for(resource_or_scope)
     new_user_session_path
