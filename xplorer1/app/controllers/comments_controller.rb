@@ -7,6 +7,10 @@ class CommentsController < ApplicationController
   def index
     @comments = Comment.all.order('created_at DESC')
   end
+  def new
+    @comment = Comment.new
+  end
+
   def create
       @satellite = Satellite.find(params[:satellite_id])
       @comment = @satellite.comments.create(params[:comment].permit(:title, :content))

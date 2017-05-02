@@ -13,26 +13,38 @@
         <!-- SIDEBAR USER TITLE -->
         <div class="profile-usertitle">
           <div class="profile-usertitle-name">
-            <%= full_name %>
+            <%= full_name current_user %>
           </div>
 
         </div>
         <!-- END SIDEBAR USER TITLE -->
         <!-- SIDEBAR BUTTONS -->
         <div class="profile-userbuttons">
-          <%= f.file_field :image, :class=>'btn pull-right' %>
-          <br>
-          <%= f.submit "upload",:class=>'btn-primary btn-xs' %>
+
+          <div class='upload-img'>
+            <label class="btn btn-default btn-file">
+              <%= f.submit "upload" %>
+            </label>
+
+            <%= f.file_field :image, :class=>'btn pull-right' %>
+
+          </div>
+
         </div>
         <!-- END SIDEBAR BUTTONS -->
         <!-- SIDEBAR MENU -->
         <div class="profile-usermenu">
           <ul class="nav">
             <li class="active">
-              <a href="#">
-                about
-              </a>
+
             </li>
+
+            <li>
+              <a href="#" target="_blank">
+                <i class="glyphicon glyphicon-ok"></i>
+                Favorited Satellites</a>
+            </li>
+            <% if current_user %>
             <li>
               <a href="#">
                 <i class="glyphicon glyphicon-user"></i>
@@ -40,14 +52,10 @@
               </a>
             </li>
             <li>
-              <a href="#" target="_blank">
-                <i class="glyphicon glyphicon-ok"></i>
-                Favorited Satellites</a>
-            </li>
-            <li>
 
-         <%= link_to "AccountSettings",  edit_user_registration_path, class: 'glyphicon glyphicon-flag' %>
+         <%= link_to " Account Settings",  edit_user_registration_path, class: 'glyphicon glyphicon-flag' %>
             </li>
+            <% end %>
           </ul>
         </div>
         <!-- END MENU -->
@@ -55,12 +63,13 @@
     </div>
     <div class="col-md-9">
       <div class="profile-content">
-          <h2><%= full_name %></h2>
+          <h2>About Me</h2>
           <hr>
           <p>
         <%= @user.about %>
       </p>
       </div>
+      <%= render @user.comments = @user.comments %>
     </div>
   </div>
 </div>

@@ -1,17 +1,38 @@
 <head>
-  <script src="https://maps.googleapis.com/maps/api/js?key="></script>
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAC_sT3NElJALYy-ynz7Xqs2aHm2kWfweM"></script>
+
 </head>
 
 <body>
 
-  <div id="map" class="gmaps4rails_map" allowfullscreen></div>
+  <div class="satellitelist">
+    <h1 class="welcomeheading">
+      Welcome to Explorer1
+    </h1>
+    <p class="welcomeintro">
+      Where we track the International Space Station in real time.
+    </p>
 
-  <% @satellites.each do |satellite| %>
-  <h1>
-    <%= satellite.name %></h1>
-  <!-- <p>Description: <%= satellite.description %></p> -->
-  <%= link_to "See More", "/satellites/#{satellite.id}" %>
+    <br />
+<% @satellites.each do |satellite| %>
+<p><%= satellite.description %></p>
   <% end %>
+  </div>
+  <div class='container'>
+    <div class='row'>
+    </div>
+    <div id="map" class="gmaps4rails_map">
+    </div>
+      <% @satellites.each do |satellite| %>
+    <div class="list-group pull-right">
+  <%=link_to "I.S.S", "/satellites/#{satellite.id}", class:"list-group-item list-group-item-success" %>
+  <%=link_to "LamAR7", "/satellites/#{satellite.id}", class:"list-group-item list-group-item-info" %>
+  <%=link_to "CAR105", "/satellites/#{satellite.id}", class:"list-group-item list-group-item-warning" %>
+  <%=link_to "S-4Y4", "/satellites/#{satellite.id}", class:"list-group-item list-group-item-danger" %>
+  <% end %>
+    </div>
+  </div>
+</div>
 
 </body>
 
@@ -20,13 +41,15 @@
       map,
       markers = [],
       issImage = 'https://image.ibb.co/cxo9Qk/sat_x1_img.png',
-      issMarker,
-      fakeMarker1,
-      fakeMarker2,
-      fakeMarker3,
+      fakeSat1 = 'http://i.imgur.com/sc3lOok.png',
+      fakeSat2 = 'http://i.imgur.com/VHhrXu5.png',
+      fakeSat3 = 'http://i.imgur.com/sUXj0hE.png',
+      issMarker ,
+      fakeMarker1 ,
+      fakeMarker2 ,
+      fakeMarker3 ,
       fakeLat,
       fakeLng;
-
   function initMap() {
     geocoder = new google.maps.Geocoder()
     var mapOptions = {
@@ -34,22 +57,16 @@
       zoom: 6,
       mapTypeId: 'satellite'
     };
-
     map = new google.maps.Map(document.getElementById("map"), mapOptions);
   };
-
   $(document).on('ready', function () {
-
     // Actions to do
     setTimeout(function () {
       initMap();
       getTheData();
     }, 100);
-
     setInterval(getTheData, 1500);
-
   });
-
   //GEOCODER
   function codeAddress() {
     var address = document.getElementById('address').value;
@@ -64,35 +81,29 @@
       }
     });
   }
-
   function getTheData() {
     $.ajax({method: 'get', url: 'http://api.open-notify.org/iss-now.json', success: onSuccess, error: onError})
-
     function onSuccess(json) {
-
       //get the data we want and parseFloat
       var whatWeWant = json.iss_position;
       lat = parseFloat(whatWeWant.latitude);
       lng = parseFloat(whatWeWant.longitude);
-
       //set the marker to the way google map wants it
       var markerForMap = {
         lat: lat,
         lng: lng
       }
-
       // Define a symbol using SVG path notation, with an opacity of 1.
       var lineSymbol = {
         path: 'M 0,-1 0,1',
         strokeOpacity: 1,
         scale: 1
       };
-
-      // Create the polyline, passing the symbol in the 'icons' property. Give the line an opacity of 0. Repeat the symbol at intervals of 20 pixels to create the dashed effect.
+      // Create the polyline. Give the line an opacity of 0. Repeat the symbol at intervals of 10 pixels.
       var line = new google.maps.Polyline({
         path: [
-          { lat, lng },
-          { lat, lng }
+          {lat, lng},
+          {lat,lng}
         ],
         strokeOpacity: 0,
         icons: [
@@ -104,14 +115,12 @@
         ],
         map: map
       });
-
       //add the fakeMarker here
       var fakeMarker = {
-        lat : fakeLat,
-        lng : fakeLng
+        lat: fakeLat,
+        lng: fakeLng
       }
       generateFakeData(20);
-
       if (fakeMarker2){
         fakeMarker2.setPosition(fakeMarker)
       } else {
@@ -119,46 +128,51 @@
           position: fakeMarker,
           map: map,
           title: 'this is a fake satellite',
-          icon: issImage
+          icon: fakeSat1,
+          url: "/satellites/2"
         });
       }
-
+      google.maps.event.addListener(fakeMarker2, 'click', function () {
+        window.location.href = fakeMarker2.url
+      });
       var fakeMarker = {
-        lat : fakeLat,
-        lng : fakeLng
+        lat: fakeLat,
+        lng: fakeLng
       }
       generateFakeData(25);
-
-      if (fakeMarker1){
+      if (fakeMarker1) {
         fakeMarker1.setPosition(fakeMarker)
       } else {
         fakeMarker1 = new google.maps.Marker({
           position: fakeMarker,
           map: map,
           title: 'this is a fake satellite',
-          icon: issImage
+          icon: fakeSat2,
+          url: "/satellites/3"
         });
       }
-
+      google.maps.event.addListener(fakeMarker1, 'click', function () {
+        window.location.href = fakeMarker1.url
+      });
       var fakeMarker = {
-        lat : fakeLat,
-        lng : fakeLng
+        lat: fakeLat,
+        lng: fakeLng
       }
       generateFakeData(-15);
-
-      if (fakeMarker3){
+      if (fakeMarker3) {
         fakeMarker3.setPosition(fakeMarker)
       } else {
         fakeMarker3 = new google.maps.Marker({
           position: fakeMarker,
           map: map,
           title: 'this is a fake satellite',
-          icon: issImage
+          icon: fakeSat3,
+          url: "/satellites/2"
         });
       }
-
-
-
+      google.maps.event.addListener(fakeMarker3, 'click', function () {
+        window.location.href = fakeMarker3.url
+      });
       //adding the iss marker in the map, the if statement only shows on maker
       if (issMarker) {
         issMarker.setPosition(markerForMap)
@@ -169,44 +183,41 @@
           map: map,
           title: 'ISS',
           icon: issImage,
-          url: "/satellites/1"
+          url: "/satellites/1",
+          id: "1"
         });
         map.setCenter(markerForMap);
       }
-
       google.maps.event.addListener(issMarker, 'click', function () {
         window.location.href = issMarker.url
       });
     }
-
     function onError(e1, e2, e3) {
       console.log("it didnt work e1", e1);
       console.log("it didnt work e2", e2);
       console.log("it didnt work e3", e3);
     }
   }
-
-
-    function generateFakeData(num) {
+  function hideIssMarker() {
+    issMarker.setMap(null);
+  }
+  function showIssMarker() {
+    issMarker.setMap(map);
+  }
+  function generateFakeData(num) {
     //generate the latitude
     fakeLat = lat + num
     if (fakeLat > 90) {
       fakeLat -= 180
+    } else if (fakeLat < -90) {
+      fakeLat += 180
     }
-    else if (fakeLat < -90) {
-        fakeLat += 180
-      }
     //generate the longitude
     fakeLng = lng + num
     if (fakeLng > 180) {
       fakeLng -= 360
-    }
-    else if (fakeLng < -180) {
+    } else if (fakeLng < -180) {
       fakeLng += 360
     }
   }
 </script>
-
-<%# TODO: change the icon for the other three satellites %>
-<%# TODO: add the SES-I space station, it is a geostationary we also need an icon for it as well %>
-<%# TODO: show a list of the satellites on the side of the map and only show one when you select a specific satellite %>
