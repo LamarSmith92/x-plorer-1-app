@@ -1,6 +1,7 @@
 <div class="post-single">
+  <%= link_to "Back", satellites_path %>
 <div class="title">
-<h1 class="satname text-center">  <%= @satellite.name %></h1>
+<h2 class="satname text-center">  <%= @satellite.name %></h2>
 </div>
 
 
@@ -28,6 +29,7 @@
     <%= image_tag 'http://i.imgur.com/la3UOok.jpg?1' %>
   </div>
 
+  ...
 </div>
 
 <!-- Controls -->
@@ -40,13 +42,12 @@
 </div>
 
 <div class="post-content">
-<p><strong>Description</strong> <br><%= @satellite.description%></p>
+<p><br><%= @satellite.description%></p>
 </div>
-</div>
+
 <h4><%= @satellite.comments.count %> Comments </h4>
 <%= render @satellite.comments %>
-
-<%= link_to "Back", satellites_path %>
 <%= render "comments/form" %>
+
 
 </body>
