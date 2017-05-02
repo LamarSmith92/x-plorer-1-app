@@ -108,16 +108,11 @@
         scale: 1
       };
 
-      // Create the polyline, passing the symbol in the 'icons' property. Give the line an opacity of 0. Repeat the symbol at intervals of 10 pixels to create the dashed effect.
+      // Create the polyline. Give the line an opacity of 0. Repeat the symbol at intervals of 10 pixels.
       var line = new google.maps.Polyline({
         path: [
-          {
-            lat,
-            lng
-          }, {
-            lat,
-            lng
-          }
+          {lat, lng},
+          {lat,lng}
         ],
         strokeOpacity: 0,
         icons: [
