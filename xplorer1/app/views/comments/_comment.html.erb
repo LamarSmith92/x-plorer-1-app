@@ -9,9 +9,7 @@
         </div>
         <div class="pull-left meta">
           <div class="title h5">
-              <% if current_user %>
-              <b><%= full_name current_user %></b>
-              <% end %>
+              <b><%= full_name comment.user %></b>
             made a post.
 
           <h6 class="text-muted time">

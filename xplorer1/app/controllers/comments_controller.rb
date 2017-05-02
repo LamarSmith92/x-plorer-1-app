@@ -5,6 +5,7 @@ class CommentsController < ApplicationController
   before_action :comment_owner, only: [:destroy, :first_name]
 
   def index
+    #check syntax
     @comments = Comment.all.order('created_at DESC')
   end
   def new

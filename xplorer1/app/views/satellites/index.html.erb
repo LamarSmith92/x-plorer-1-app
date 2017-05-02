@@ -25,6 +25,7 @@
     </div>
       <% @satellites.each do |satellite| %>
     <div class="list-group pull-right">
+      <!--can you store these somewhere? no string hardcoding in views if you can?-->
   <%=link_to "I.S.S", "/satellites/#{satellite.id}", class:"list-group-item list-group-item-success" %>
   <%=link_to "LamAR7", "/satellites/#{satellite.id}", class:"list-group-item list-group-item-info" %>
   <%=link_to "CAR105", "/satellites/#{satellite.id}", class:"list-group-item list-group-item-warning" %>
@@ -36,6 +37,8 @@
 
 </body>
 
+<!-- move to js file or helper or something-->
+<!--good use of imgur-->
 <script>
   var geocoder,
       map,

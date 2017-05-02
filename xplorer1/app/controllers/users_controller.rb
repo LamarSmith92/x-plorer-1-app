@@ -11,6 +11,7 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
       if @user.update_attributes(secure_params)
+        #perhaps better notice name??
         redirect_to user_path, :notice => 'no problems'
       else
         return
