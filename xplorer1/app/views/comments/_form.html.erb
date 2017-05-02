@@ -1,24 +1,22 @@
 <%= form_for [@satellite, @satellite.comments.build] do |f| %>
+<% if user_signed_in? %>
 <div class="container pb-cmnt-container">
   <div class="row">
-    <div class="col-sm-8">
+    <div class="col-md-6 col-md-offset-3">
       <div class="panel panel-info">
         <div class="panel-body">
-          <h3>Write Comment!</h3>
+          <h3>Write A Comment!</h3>
           <%= f.label :title %><br>
-          <%= f.text_field :title, minimum: 5 %><br>
-          <%= f.label :content %>
-          <br>
-          <%= f.text_area :content, class:"pb-cmnt-textarea" %>
-
-          <form class="">
-            <%= f.submit  %>
-
+          <%= f.text_field :title, minimum: 5, type:'required' %><br>
+          <%= f.label :comment %>
+          <%= f.text_area :content, class:"pb-cmnt-textarea success" %>
+<br>
+            <%= f.submit 'Submit', class:'btn-primary btn-md', type:'submit'  %>
           </form>
         </div>
       </div>
     </div>
   </div>
 </div>
-
+<% end %>
 <% end %>
