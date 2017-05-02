@@ -20,10 +20,13 @@
       map,
       markers = [],
       issImage = 'https://image.ibb.co/cxo9Qk/sat_x1_img.png',
-      issMarker,
-      fakeMarker1,
-      fakeMarker2,
-      fakeMarker3,
+      fakeSat1 = 'http://i.imgur.com/sc3lOok.png',
+      fakeSat2 = 'http://i.imgur.com/VHhrXu5.png',
+      fakeSat3 = 'http://i.imgur.com/sUXj0hE.png',
+      issMarker ,
+      fakeMarker1 ,
+      fakeMarker2 ,
+      fakeMarker3 ,
       fakeLat,
       fakeLng;
 
@@ -88,7 +91,7 @@
         scale: 1
       };
 
-      // Create the polyline, passing the symbol in the 'icons' property. Give the line an opacity of 0. Repeat the symbol at intervals of 20 pixels to create the dashed effect.
+      // Create the polyline, passing the symbol in the 'icons' property. Give the line an opacity of 0. Repeat the symbol at intervals of 10 pixels to create the dashed effect.
       var line = new google.maps.Polyline({
         path: [
           { lat, lng },
@@ -110,7 +113,10 @@
         lat : fakeLat,
         lng : fakeLng
       }
+
+
       generateFakeData(20);
+
 
       if (fakeMarker2){
         fakeMarker2.setPosition(fakeMarker)
@@ -119,14 +125,19 @@
           position: fakeMarker,
           map: map,
           title: 'this is a fake satellite',
-          icon: issImage
+          icon: fakeSat1,
+          url: "/satellites/2"
         });
       }
+      google.maps.event.addListener(fakeMarker2, 'click', function () {
+        window.location.href = fakeMarker2.url
+      });
 
       var fakeMarker = {
         lat : fakeLat,
         lng : fakeLng
       }
+
       generateFakeData(25);
 
       if (fakeMarker1){
@@ -136,9 +147,13 @@
           position: fakeMarker,
           map: map,
           title: 'this is a fake satellite',
-          icon: issImage
+          icon: fakeSat2,
+          url: "/satellites/3"
         });
       }
+      google.maps.event.addListener(fakeMarker1, 'click', function () {
+        window.location.href = fakeMarker1.url
+      });
 
       var fakeMarker = {
         lat : fakeLat,
@@ -153,9 +168,13 @@
           position: fakeMarker,
           map: map,
           title: 'this is a fake satellite',
-          icon: issImage
+          icon: fakeSat3,
+          url: "/satellites/2"
         });
       }
+      google.maps.event.addListener(fakeMarker3, 'click', function () {
+        window.location.href = fakeMarker3.url
+      });
 
 
 
