@@ -1,3 +1,4 @@
+#nice carousel
 module CarouselHelper
   def carousel_for(images)
     Carousel.new(self, images).html
@@ -19,6 +20,7 @@ module CarouselHelper
     attr_accessor :view, :images, :uid
     delegate :link_to, :content_tag, :image_tag, :safe_join, to: :view
 
+#what is safe join?
     def indicators
       items = images.count.times.map { |index| indicator_tag(index) }
       content_tag(:ol, safe_join(items), class: 'carousel-indicators')

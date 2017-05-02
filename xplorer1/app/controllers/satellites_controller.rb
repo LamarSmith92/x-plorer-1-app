@@ -2,6 +2,7 @@ class SatellitesController < ApplicationController
 
   def  index
     @satellites = Satellite.all
+    #fun
     cookies[:lat_lon] = JSON.generate([47.68, -122.37])
 
   end
