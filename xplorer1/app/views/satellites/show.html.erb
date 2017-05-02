@@ -46,7 +46,7 @@
 </div>
 
 <h4><%= @satellite.comments.count %> Comments </h4>
-<%= render @satellite.comments %>
+<%= render @satellite.current_user.comments %>
 <%= render "comments/form" %>
 
 
