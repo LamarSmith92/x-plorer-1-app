@@ -1,4 +1,6 @@
 <div class="container bootstrap snippet">
+  <div class="col-sm-2">
+  </div>
   <div class="col-sm-8">
     <div class="panel panel-white post panel-shadow">
       <div class="post-heading">
@@ -7,34 +9,32 @@
         </div>
         <div class="pull-left meta">
           <div class="title h5">
-            <a href= "#">
+            <a href="#">
 
-              <%=
-    link_to_unless_current("Comment", { controller: "comments", action: "new" }) do
-       link_to("Go back", { controller: "posts", action: "index" })
-    end
- %>
-
-
-
+              <%= link_to_unless_current("Comment", { controller: "comments", action: "new" }) do
+          link_to("Go back", { controller: "posts", action: "index" })
+          end %>
               <% if current_user %>
               <b><%= full_name current_user %></b>
               <% end %>
             </a>
             made a post.
           </div>
-          <h6 class="text-muted time"><%= time_ago_in_words(comment.created_at) %> ago</h6>
+          <h6 class="text-muted time"><%= time_ago_in_words(comment.created_at) %>
+            ago</h6>
         </div>
       </div>
       <div class="post-description">
         <p><%= comment.content %></p>
         <div class="stats">
           <% if current_user %>
-          <%= link_to 'Delete', [comment.satellite, comment], method: :delete, class: "button"%>
+          <%= link_to 'x Delete', [comment.satellite, comment], method: :delete, class: "btn btn-danger"%>
           <% end %>
         </div>
       </div>
     </div>
+  </div>
+  <div class="col-sm-2">
   </div>
 </div>
 <br>
