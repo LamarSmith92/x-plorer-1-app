@@ -1,6 +1,6 @@
 <div class="post-single">
 <div class="title">
-<h2 class="satname text-center">  <%= @satellite.name %></h2>
+<h1 class="satname text-center">  <%= @satellite.name %></h1>
 </div>
 
 
@@ -28,7 +28,6 @@
     <%= image_tag 'http://i.imgur.com/la3UOok.jpg?1' %>
   </div>
 
-  ...
 </div>
 
 <!-- Controls -->
@@ -44,11 +43,10 @@
 <p><strong>Description</strong> <br><%= @satellite.description%></p>
 </div>
 </div>
-<%= render @satellite.comments %>
 <h4><%= @satellite.comments.count %> Comments </h4>
+<%= render @satellite.comments %>
+
 <%= link_to "Back", satellites_path %>
 <%= render "comments/form" %>
-<h1 id=isstitle>The International Space Station</h1>
-
 
 </body>

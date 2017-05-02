@@ -20,9 +20,11 @@
         <!-- END SIDEBAR USER TITLE -->
         <!-- SIDEBAR BUTTONS -->
         <div class="profile-userbuttons">
+          <% if current_user %>
           <%= f.file_field :image, :class=>'btn pull-right' %>
           <br>
           <%= f.submit "upload",:class=>'btn-primary btn-xs' %>
+          <% end %>
         </div>
         <!-- END SIDEBAR BUTTONS -->
         <!-- SIDEBAR MENU -->
@@ -33,21 +35,18 @@
                 about
               </a>
             </li>
-            <li>
-              <a href="#">
-                <i class="glyphicon glyphicon-user"></i>
-                My Post
-              </a>
-            </li>
+
             <li>
               <a href="#" target="_blank">
                 <i class="glyphicon glyphicon-ok"></i>
                 Favorited Satellites</a>
             </li>
+            <% if current_user %>
             <li>
 
          <%= link_to "AccountSettings",  edit_user_registration_path, class: 'glyphicon glyphicon-flag' %>
             </li>
+            <% end %>
           </ul>
         </div>
         <!-- END MENU -->
@@ -55,7 +54,7 @@
     </div>
     <div class="col-md-9">
       <div class="profile-content">
-          <h2><%= full_name current_user %></h2>
+          <h2>About Me</h2>
           <hr>
           <p>
         <%= @user.about %>
