@@ -13,26 +13,25 @@ class CommentsController < ApplicationController
   end
 
   def create
-      @satellite = Satellite.find(params[:satellite_id])
-      @comment = @satellite.comments.create(params[:comment].permit(:title, :content))
-      if current_user == nil
-        flash[:error] = "You must be signed in"
-        redirect_to new_user_session_path
-        return
+    @satellite = Satellite.find(params[:satellite_id])
+    @comment = @satellite.comments.create(params[:comment].permit(:title, :content))
+    if current_user == nil
+      flash[:error] = "You must be signed in"
+      redirect_to new_user_session_path
+      return
     else @comment.user_id = current_user.id
     end
-      if @comment.save
-        flash[:notice] = "Successfully created a comment"
+    if @comment.save
+      flash[:notice] = "Successfully created a comment"
       redirect_to satellite_path(@satellite)
     else
       flash[:error] = "Something went wrong"
       redirect_to satellite_path(@satellite.id)
-      end
     end
-
+  end
 
   def destroy
-  @comment.destroy
+    @comment.destroy
     redirect_to satellite_path(@satellite)
   end
 
