@@ -21,12 +21,15 @@
         <!-- SIDEBAR BUTTONS -->
         <div class="profile-userbuttons">
 
-          <label class="btn btn-default btn-file">
-              Browse <input type="file" style="display: none;">
-          </label>
+          <div class='upload-img'>
+            <label class="btn btn-default btn-file">
+              <%= f.submit "upload" %>
+            </label>
 
+            <%= f.file_field :image, :class=>'btn pull-right' %>
+
+          </div>
           <br>
-          <%= f.submit "upload",:class=>'btn-primary btn-xs' %>
         </div>
         <!-- END SIDEBAR BUTTONS -->
         <!-- SIDEBAR MENU -->
@@ -59,6 +62,7 @@
         <%= @user.about %>
       </p>
       </div>
+      <%= render @user_comments = @user.comments %>
     </div>
   </div>
 </div>

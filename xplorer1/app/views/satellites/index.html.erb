@@ -12,24 +12,26 @@
     <p class="welcomeintro">
       Where we track the International Space Station in real time.
     </p>
+    <br />
 <% @satellites.each do |satellite| %>
-<h1 class="issheading"><%= satellite.name %></h1>
-<p>Description: <%= satellite.description %></p>
-  <%= link_to "See More", "/satellites/#{satellite.id}" %>
+<p><%= satellite.description %></p>
   <% end %>
 
   </div>
+  <div class='container'>
+    <div class='row'>
+    </div>
     <div id="map" class="gmaps4rails_map">
     </div>
       <% @satellites.each do |satellite| %>
-  <div class='container'>
     <div class="list-group pull-right">
-  <%=link_to "Iss", "/satellites/#{satellite.id}", class:"list-group-item list-group-item-success" %>
-  <%=link_to "Fake Satellite1", "/satellites/#{satellite.id}", class:"list-group-item list-group-item-info" %>
-  <%=link_to "Fake Satellite2", "/satellites/#{satellite.id}", class:"list-group-item list-group-item-warning" %>
-  <%=link_to "Fake Satellite3", "/satellites/#{satellite.id}", class:"list-group-item list-group-item-danger" %>
+  <%=link_to "I.S.S", "/satellites/#{satellite.id}", class:"list-group-item list-group-item-success" %>
+  <%=link_to "LamAR7", "/satellites/#{satellite.id}", class:"list-group-item list-group-item-info" %>
+  <%=link_to "CAR105", "/satellites/#{satellite.id}", class:"list-group-item list-group-item-warning" %>
+  <%=link_to "S-4Y4", "/satellites/#{satellite.id}", class:"list-group-item list-group-item-danger" %>
   <% end %>
-</div>
+    </div>
+  </div>
 </div>
 
 
