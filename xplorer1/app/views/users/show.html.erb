@@ -25,8 +25,6 @@
               Browse <input type="file" style="display: none;">
           </label>
 
-
-          <%= f.file_field :image, :class=>'btn pull-right' %>
           <br>
           <%= f.submit "upload",:class=>'btn-primary btn-xs' %>
         </div>
@@ -55,7 +53,7 @@
     </div>
     <div class="col-md-9">
       <div class="profile-content">
-          <h2><%= full_name current_user %></h2>
+          <h2>About Me</h2>
           <hr>
           <p>
         <%= @user.about %>
@@ -68,4 +66,6 @@
 <br>
 <br>
 
-<% end %>
+<% end %>def after_sign_in_path_for(resource)
+    request.env['omniauth.origin'] || stored_location_for(resource) || root_path
+  end
