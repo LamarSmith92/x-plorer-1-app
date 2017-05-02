@@ -9,12 +9,7 @@
           <div class="title h5">
             <a href= "#">
 
-              <%=
-    link_to_unless_current("Comment", { controller: "comments", action: "new" }) do
-       link_to("Go back", { controller: "posts", action: "index" })
-    end
- %>
-
+            
 
 
               <% if current_user %>
