@@ -9,23 +9,26 @@
         </div>
         <div class="pull-left meta">
           <div class="title h5">
-            <a href="#">
 
-              <%= link_to_unless_current("Comment", { controller: "comments", action: "new" }) do
-          link_to("Go back", { controller: "posts", action: "index" })
-          end %>
+
+
               <% if current_user %>
               <b><%= full_name current_user %></b>
               <% end %>
-            </a>
             made a post.
+          <h6 class="text-muted time">
+            <p><%= time_ago_in_words(comment.created_at) %>
+            ago</p></h6>
           </div>
-          <h6 class="text-muted time"><%= time_ago_in_words(comment.created_at) %>
-            ago</h6>
+
         </div>
       </div>
+      <%= comment.title %>
+      <br>
+      <br>
       <div class="post-description">
         <p><%= comment.content %></p>
+        <br>
         <div class="stats">
           <% if current_user %>
           <%= link_to 'x Delete', [comment.satellite, comment], method: :delete, class: "btn btn-danger"%>

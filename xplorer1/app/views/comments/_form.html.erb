@@ -1,6 +1,8 @@
 <%= form_for [@satellite, @satellite.comments.build] do |f| %>
+<% if user_signed_in? %>
 <div class="container pb-cmnt-container">
   <div class="row">
+
     <div class="col-sm-2">
     </div>
     <div class="col-sm-8">
@@ -14,6 +16,7 @@
           <%= f.text_area :content, class:"pb-cmnt-textarea" %>
             <%= f.submit "Post" %>
 
+
         </div>
       </div>
     </div>
@@ -21,5 +24,5 @@
     </div>
   </div>
 </div>
-
+<% end %>
 <% end %>
