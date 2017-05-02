@@ -9,6 +9,9 @@
         </div>
         <div class="pull-left meta">
           <div class="title h5">
+
+
+
               <% if current_user %>
               <b><%= full_name current_user %></b>
               <% end %>
@@ -17,6 +20,7 @@
             <p><%= time_ago_in_words(comment.created_at) %>
             ago</p></h6>
           </div>
+
         </div>
       </div>
       <%= comment.title %>
@@ -33,6 +37,7 @@
       </div>
     </div>
   </div>
+  <div class="col-sm-2">
+  </div>
 </div>
 <br>
-Add Comment Collapse

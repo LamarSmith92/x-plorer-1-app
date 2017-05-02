@@ -2,19 +2,25 @@
 <% if user_signed_in? %>
 <div class="container pb-cmnt-container">
   <div class="row">
-    <div class="col-md-6 col-md-offset-3">
+
+    <div class="col-sm-2">
+    </div>
+    <div class="col-sm-8">
       <div class="panel panel-info">
         <div class="panel-body">
-          <h3>Write A Comment!</h3>
+          <h3>Post Comment!</h3>
           <%= f.label :title %><br>
-          <%= f.text_field :title, minimum: 5, type:'required' %><br>
-          <%= f.label :comment %>
-          <%= f.text_area :content, class:"pb-cmnt-textarea success" %>
-<br>
-            <%= f.submit 'Submit', class:'btn-primary btn-md', type:'submit'  %>
-          </form>
+          <%= f.text_field :title, minimum: 5 %><br>
+          <%= f.label :Comment %>
+          <br>
+          <%= f.text_area :content, class:"pb-cmnt-textarea" %>
+            <%= f.submit "Post" %>
+
+
         </div>
       </div>
+    </div>
+    <div class="col-sm-2">
     </div>
   </div>
 </div>
